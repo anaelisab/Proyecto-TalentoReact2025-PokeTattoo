@@ -53,9 +53,14 @@ const Inicio = () => {
             <Col lg={6} className="text-center">
               <div className="imagen-hero">
                 <img
-                  src="https://via.placeholder.com/400x400/667eea/ffffff?text=PokéTattoo"
-                  alt="Arte de Tatuajes Pokémon"
+                  src="/images/hero-image.png"
+                  alt="Diseño de Tatuajes Pokémon"
                   className="img-fluid rounded-circle shadow-lg"
+                  onError={(e) => {
+                    // Fallback si la imagen no carga
+                    e.target.src =
+                      "https://img.pokemondb.net/sprites/go/normal/sandshrew.png";
+                  }}
                 />
               </div>
             </Col>
