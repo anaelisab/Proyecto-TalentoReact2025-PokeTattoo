@@ -42,7 +42,7 @@ Buscador: podes buscar por nombre el pokemon.
 Card expandida: tiene información sobre el pokemon. Lo básico al igual que antes tiene el número, el nombre, y el tipo. Luego tiene otras características que pueden ser simbólicas para el usuario o simplemente un dato de color
 ![Detalle Imagen con información del pokemon](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Detalle-1-rm.png)
 Más abajo tenes opciones para personalizar tu tatuaje y aportar información para que el total sea lo más aproximado posible al precio final.
-![Opciones a elegir](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Detalle-2-rm.png)
+![Opciones a elegir](https://https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Detalle-2-rm.png)
 Y por último, los botones de agregar y volver, más una lista de avisos/información para tener en cuenta a la hora de continuar.
 ![Información sobre el servicio](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Detalle-3-rm.png)
 Feedback visual al agregar un producto al carrito
@@ -51,22 +51,22 @@ Feedback visual al agregar un producto al carrito
 
 ## 2.3 Contacto
 Pantalla inicial del contacto: Formulario de contacto a la izquierda, y a la derecha ubicación del local, teléfono, mail, red social, y horarios de atención.
-[Información sobre el servicio](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Contacto-rm.png)
+![Información sobre el servicio](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Contacto-rm.png?raw=true)
 Feedback de mensaje enviado:
-[Información sobre el servicio](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Mensaje-enviado-rm.png)
+![Información sobre el servicio](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Mensaje-enviado-rm.png)
 
 ## 2.4 Carrito
 Carrito vacío:
-[Carrito vacío](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Carrito-1-rm.png)
+![Carrito vacío](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Carrito-1-rm.png)
 Carrito con pokemones:
-[Carrito lleno](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Carrito-2-rm.png)
+![Carrito lleno](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Carrito-2-rm.png)
 A la izquierda tenes: detallados los productos, elecciones hechas por el usuario, cantidad, precio por unidad y opcion de eliminar, quitar, o agregar.
 A la derecha tenes: un resumen con el total y un cuadro de texto para que puedas dejar alguna aclaración o comentario, botón finalizar, botón seguir comprando que te dirige al catálogo y debajo una serie de pasos que le informan como es la secuencia luego de dar finalizar.
-[Detalles botones y lista](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Carrito-detalle-rm.png)
+![Detalles botones y lista](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Carrito-detalle-rm.png)
 Confirmar compra.
-[Confirmar luego de hacer click en finalizar](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Finalizar-compra-rm.png)
+![Confirmar luego de hacer click en finalizar](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Finalizar-compra-rm.png)
 Finalizada.
-[Compra finalizada](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Feedback-Compra-Finalizada-rm.png)
+![Compra finalizada](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Feedback-Compra-Finalizada-rm.png)
 
 #### 2.5 Componentes presentes en todas las páginas:
 Navbar:
