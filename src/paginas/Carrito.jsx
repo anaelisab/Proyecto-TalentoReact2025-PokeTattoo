@@ -130,32 +130,37 @@ const Carrito = () => {
                       <Col md={2} className="text-center">
                         <img
                           src={
-                            elemento.pokemon.sprites.other["official-artwork"]
-                              .front_default ||
-                            "https://via.placeholder.com/80x80" ||
-                            "/placeholder.svg" ||
-                            "/placeholder.svg"
+                            elemento.pokemon.sprites?.other?.[
+                              "official-artwork"
+                            ]?.front_default ||
+                            elemento.pokemon.imagen ||
+                            "https://via.placeholder.com/80x80"
                           }
-                          alt={elemento.pokemon.name}
+                          alt={elemento.pokemon.name || elemento.pokemon.nombre}
                           className="img-fluid imagen-carrito"
                           style={{ maxHeight: "80px", maxWidth: "80px" }}
                         />
                       </Col>
                       <Col md={5}>
                         <h5 className="text-capitalize mb-2 fw-bold">
-                          #{elemento.pokemon.id.toString().padStart(3, "0")}{" "}
-                          {elemento.pokemon.name}
+                          {elemento.pokemon.name
+                            ? `#${elemento.pokemon.id
+                                .toString()
+                                .padStart(3, "0")} ${elemento.pokemon.name}`
+                            : elemento.pokemon.nombre}
                         </h5>
                         <div className="mb-2">
-                          {elemento.pokemon.types.map((tipo) => (
-                            <Badge
-                              key={tipo.type.name}
-                              bg="secondary"
-                              className="me-1 badge-tipo"
-                            >
-                              {tipo.type.name}
-                            </Badge>
-                          ))}
+                          {elemento.pokemon.types
+                            ? elemento.pokemon.types.map((tipo) => (
+                                <Badge
+                                  key={tipo.type.name}
+                                  bg="secondary"
+                                  className="me-1 badge-tipo"
+                                >
+                                  {tipo.type.name}
+                                </Badge>
+                              ))
+                            : null}
                         </div>
                         <div className="opciones-producto">
                           <div className="row text-muted small">
@@ -374,10 +379,12 @@ const Carrito = () => {
                   <div className="d-flex align-items-center">
                     <img
                       src={
-                        elemento.pokemon.sprites.other["official-artwork"]
-                          .front_default || "/placeholder.svg"
+                        elemento.pokemon.sprites?.other?.["official-artwork"]
+                          ?.front_default ||
+                        elemento.pokemon.imagen ||
+                        "/placeholder.svg"
                       }
-                      alt={elemento.pokemon.name}
+                      alt={elemento.pokemon.name || elemento.pokemon.nombre}
                       style={{
                         width: "50px",
                         height: "50px",
@@ -387,7 +394,7 @@ const Carrito = () => {
                     />
                     <div className="flex-grow-1">
                       <strong className="text-capitalize">
-                        {elemento.pokemon.name}
+                        {elemento.pokemon.name || elemento.pokemon.nombre}
                       </strong>
                       <span className="text-muted"> x{elemento.cantidad}</span>
                       <div className="small text-muted">

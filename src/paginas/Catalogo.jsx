@@ -16,6 +16,8 @@ import { Helmet } from "react-helmet";
 import { TarjetaProducto } from "../componentes/EstilosPersonalizados";
 import SeccionCuidados from "../componentes/SeccionCuidados";
 import Footer from "../componentes/Footer";
+import { usarProductos } from "../contexto/ContextoProductos";
+import { usarCarrito } from "../contexto/ContextoCarrito";
 
 const Catalogo = () => {
   const [pokemon, setPokemon] = useState([]);
@@ -24,6 +26,8 @@ const Catalogo = () => {
   const [paginaActual, setPaginaActual] = useState(1);
   const [pokemonFiltrado, setPokemonFiltrado] = useState([]);
   const pokemonPorPagina = 12;
+  const { productos: productosEspeciales } = usarProductos();
+  const { agregarAlCarrito } = usarCarrito();
 
   useEffect(() => {
     const obtenerPokemon = async () => {
@@ -121,7 +125,7 @@ const Catalogo = () => {
           </Col>
         </Row>
 
-        {/* Barra de búsqueda mejorada */}
+        {/* Barra de búsqueda */}
         <Row className="mb-4">
           <Col md={6} className="mx-auto">
             <Form role="search">
@@ -228,7 +232,7 @@ const Catalogo = () => {
           </Row>
         )}
 
-        {/* Paginación mejorada */}
+        {/* Paginación*/}
         {totalPaginas > 1 && (
           <Row className="mt-5">
             <Col>
@@ -315,6 +319,87 @@ const Catalogo = () => {
               </nav>
             </Col>
           </Row>
+        )}
+        {/* Sección Especiales */}
+        {productosEspeciales.length > 0 && (
+          <>
+            <Row className="mb-4 mt-5">
+              <Col lg={8} className="mx-auto text-center">
+                <h2 className="display-5 fw-bold mb-4 text-primary">
+                  Especiales
+                </h2>
+                <p className="lead text-muted">
+                  Productos personalizados y diseños únicos agregados por el
+                  estudio.
+                </p>
+                <p className="lead text-muted">
+                  Tener en cuenta que los precios son aproximados para las ideas
+                  pensadas por los artistas (tamaño, dificultad del diseño,
+                  horas, sesiones). Todo charlable eso es charlable, aun así el
+                  precio base de todos los tatuajes es 15 mil.
+                </p>
+              </Col>
+            </Row>
+            <Row
+              className="g-4"
+              role="list"
+              aria-label="Lista de productos especiales"
+            >
+              {productosEspeciales.map((prod) => (
+                <Col md={6} lg={4} xl={3} key={prod.id} role="listitem">
+                  <TarjetaProducto
+                    as={Card}
+                    className="h-100 shadow-sm tarjeta-pokemon"
+                  >
+                    <Card.Img
+                      variant="top"
+                      src={prod.imagen}
+                      style={{
+                        height: "200px",
+                        objectFit: "contain",
+                        padding: "20px",
+                      }}
+                      alt={prod.nombre}
+                      loading="lazy"
+                      onError={(e) => {
+                        e.target.src = "/placeholder.svg";
+                      }}
+                    />
+                    <Card.Body className="d-flex flex-column">
+                      <Card.Title className="text-capitalize text-center">
+                        {prod.nombre}
+                      </Card.Title>
+                      <Card.Text className="text-center text-muted mb-3">
+                        {prod.descripcion}
+                      </Card.Text>
+                      <Card.Text className="text-center fw-bold text-success mb-3">
+                        ${prod.precio?.toLocaleString()}
+                      </Card.Text>
+                      <div className="mt-auto text-center">
+                        <Button
+                          variant="primary"
+                          className="w-100"
+                          onClick={() =>
+                            agregarAlCarrito(prod, {
+                              tamaño: prod.tamaño || "N/A",
+                              color: prod.color || "N/A",
+                              ubicacion: prod.ubicacion || "N/A",
+                            })
+                          }
+                        >
+                          <i
+                            className="bi bi-cart-plus me-2"
+                            aria-hidden="true"
+                          ></i>
+                          Agregar al carrito
+                        </Button>
+                      </div>
+                    </Card.Body>
+                  </TarjetaProducto>
+                </Col>
+              ))}
+            </Row>
+          </>
         )}
       </Container>
 
