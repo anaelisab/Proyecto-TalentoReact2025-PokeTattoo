@@ -8,7 +8,7 @@ const Footer = () => {
           <Col md={6}>
             <h5>PokéTattoo Studio</h5>
             <p className="mb-0">
-              © 2024 Todos los derechos reservados. Pagina falsa para Talento
+              © 2024 Todos los derechos reservados. Página falsa para Talento
               Tech
             </p>
           </Col>

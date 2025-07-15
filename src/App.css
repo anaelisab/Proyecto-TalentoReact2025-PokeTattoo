@@ -51,10 +51,7 @@
 
 .imagen-hero img {
   max-width: 100%;
-  max-height: 400px;
-  width: auto;
   height: auto;
-  object-fit: cover;
 }
 
 /* Arreglo para el problema de superposición en detalle del producto */
@@ -490,6 +487,62 @@
   .item-cuidado {
     padding: 2rem; /* Más padding interno */
     min-height: 140px;
+  }
+}
+
+/* ESTILOS PARA OFFCANVAS MÓVIL */
+.offcanvas-mobile {
+  width: 280px !important;
+}
+
+.offcanvas-mobile .offcanvas-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.nav-link-mobile {
+  padding: 1rem 1.5rem !important;
+  color: var(--color-negro) !important;
+  border-bottom: 1px solid var(--color-gris-claro);
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.nav-link-mobile:hover {
+  background-color: var(--color-fondo-alternativo);
+  color: var(--color-primario) !important;
+  text-decoration: none;
+}
+
+.nav-link-mobile.active {
+  background-color: var(--color-primario);
+  color: var(--color-blanco) !important;
+  font-weight: bold;
+}
+
+.nav-link-mobile.active i {
+  color: var(--color-blanco);
+}
+
+.nav-link-mobile i {
+  width: 20px;
+  text-align: center;
+}
+
+/* ARREGLO PARA SUPERPOSICIÓN NAVBAR DESKTOP */
+@media (min-width: 992px) {
+  .navbar .dropdown-toggle {
+    margin-left: 0.5rem;
+  }
+
+  .navbar .nav-link {
+    margin-right: 0.5rem;
+  }
+
+  /* Espaciado específico para evitar superposición */
+  .navbar-nav .nav-link:last-child {
+    margin-right: 0;
   }
 }
 

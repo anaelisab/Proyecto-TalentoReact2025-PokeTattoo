@@ -12,6 +12,8 @@ import {
   InputGroup,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import { TarjetaProducto } from "../componentes/EstilosPersonalizados";
 import SeccionCuidados from "../componentes/SeccionCuidados";
 import Footer from "../componentes/Footer";
 
@@ -52,9 +54,14 @@ const Catalogo = () => {
     obtenerPokemon();
   }, []);
 
+  // Búsqueda en tiempo real
   useEffect(() => {
-    const filtrado = pokemon.filter((poke) =>
-      poke.name.toLowerCase().includes(terminoBusqueda.toLowerCase())
+    const filtrado = pokemon.filter(
+      (poke) =>
+        poke.name.toLowerCase().includes(terminoBusqueda.toLowerCase()) ||
+        poke.types.some((type) =>
+          type.type.name.toLowerCase().includes(terminoBusqueda.toLowerCase())
+        )
     );
     setPokemonFiltrado(filtrado);
     setPaginaActual(1);
@@ -77,9 +84,9 @@ const Catalogo = () => {
   if (cargando) {
     return (
       <Container className="py-5">
-        <div className="text-center">
+        <div className="text-center" role="status" aria-live="polite">
           <Spinner animation="border" variant="primary" size="lg" />
-          <h3 className="mt-3">Cargando catálogo...</h3>
+          <h2 className="mt-3">Cargando catálogo...</h2>
           <p className="text-muted">Esto puede tomar unos momentos</p>
         </div>
       </Container>
@@ -88,92 +95,144 @@ const Catalogo = () => {
 
   return (
     <>
+      <Helmet>
+        <title>
+          Catálogo de Diseños Pokémon - Todos los Tatuajes | PokéTattoo Studio
+        </title>
+        <meta
+          name="description"
+          content="Explora nuestro catálogo completo de diseños de tatuajes Pokémon. Más de 150 diseños únicos disponibles. Busca por nombre o tipo de Pokémon."
+        />
+        <meta
+          name="keywords"
+          content="catalogo pokemon, diseños tatuajes pokemon, todos los pokemon, buscar pokemon tattoo"
+        />
+        <link rel="canonical" href="https://poketattoo.com/catalogo" />
+      </Helmet>
+
       <Container className="py-5">
         <Row>
           <Col lg={8} className="mx-auto text-center mb-5">
-            <h1 className="display-4 fw-bold mb-4">Pokédex</h1>
+            <h1 className="display-4 fw-bold mb-4">Catálogo de Diseños</h1>
             <p className="lead text-muted">
-              Explorá y elige tu compañero Pokémon
+              Explorá nuestra colección completa de diseños Pokémon para
+              tatuajes
             </p>
           </Col>
         </Row>
 
-        {/* Barra de búsqueda */}
+        {/* Barra de búsqueda mejorada */}
         <Row className="mb-4">
           <Col md={6} className="mx-auto">
-            <InputGroup>
-              <Form.Control
-                type="text"
-                placeholder="Buscar Pokémon..."
-                value={terminoBusqueda}
-                onChange={(e) => setTerminoBusqueda(e.target.value)}
-              />
-              <InputGroup.Text>🔍</InputGroup.Text>
-            </InputGroup>
+            <Form role="search">
+              <InputGroup>
+                <Form.Control
+                  type="search"
+                  placeholder="Buscar por nombre o tipo de Pokémon..."
+                  value={terminoBusqueda}
+                  onChange={(e) => setTerminoBusqueda(e.target.value)}
+                  aria-label="Buscar Pokémon"
+                  aria-describedby="search-help"
+                />
+                <InputGroup.Text>
+                  <i className="bi bi-search" aria-hidden="true"></i>
+                </InputGroup.Text>
+              </InputGroup>
+              <Form.Text id="search-help" className="text-muted">
+                Busca por nombre (ej: pikachu) o tipo (ej: electric)
+              </Form.Text>
+            </Form>
           </Col>
         </Row>
 
         {/* Resultados de búsqueda */}
         <Row className="mb-4">
           <Col>
-            <p className="text-muted">
-              Mostrando {pokemonActual.length} de {pokemonFiltrado.length}{" "}
-              Pokémon
+            <p className="text-muted" role="status" aria-live="polite">
+              {terminoBusqueda ? (
+                <>
+                  Mostrando {pokemonActual.length} de {pokemonFiltrado.length}{" "}
+                  resultados para "{terminoBusqueda}"
+                </>
+              ) : (
+                <>
+                  Mostrando {pokemonActual.length} de {pokemonFiltrado.length}{" "}
+                  Pokémon
+                </>
+              )}
             </p>
           </Col>
         </Row>
 
         {/* Grid de Pokémon */}
-        <Row className="g-4">
-          {pokemonActual.map((poke) => (
-            <Col md={6} lg={4} xl={3} key={poke.id}>
-              <Card className="h-100 shadow-sm tarjeta-pokemon">
-                <Card.Img
-                  variant="top"
-                  src={poke.sprites.other["official-artwork"].front_default}
-                  style={{
-                    height: "200px",
-                    objectFit: "contain",
-                    padding: "20px",
-                  }}
-                  alt={poke.name}
-                />
-                <Card.Body className="d-flex flex-column">
-                  <Card.Title className="text-capitalize text-center">
-                    #{poke.id.toString().padStart(3, "0")} {poke.name}
-                  </Card.Title>
-                  <Card.Text className="text-center text-muted mb-3">
-                    {poke.types.map((tipo) => (
-                      <span
-                        key={tipo.type.name}
-                        className="badge bg-secondary me-1"
-                      >
-                        {tipo.type.name}
-                      </span>
-                    ))}
-                  </Card.Text>
-                  <div className="mt-auto text-center">
-                    <Button
-                      as={Link}
-                      to={`/producto/${poke.id}`}
-                      variant="primary"
-                      className="w-100"
-                    >
-                      <i className="bi bi-eye me-2"></i>
-                      Ver Más
-                    </Button>
-                  </div>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
+        {pokemonFiltrado.length === 0 ? (
+          <div className="text-center py-5">
+            <i
+              className="bi bi-search text-muted"
+              style={{ fontSize: "3rem" }}
+              aria-hidden="true"
+            ></i>
+            <h3 className="mt-3 text-muted">No se encontraron resultados</h3>
+            <p className="text-muted">Intenta con otro término de búsqueda</p>
+          </div>
+        ) : (
+          <Row
+            className="g-4"
+            role="list"
+            aria-label="Lista de diseños Pokémon"
+          >
+            {pokemonActual.map((poke) => (
+              <Col md={6} lg={4} xl={3} key={poke.id} role="listitem">
+                <TarjetaProducto as={Card} className="h-100 shadow-sm">
+                  <Link
+                    to={`/producto/${poke.id}`}
+                    className="text-decoration-none text-dark"
+                    aria-label={`Ver detalles del diseño de ${poke.name}`}
+                  >
+                    <Card.Img
+                      variant="top"
+                      src={poke.sprites.other["official-artwork"].front_default}
+                      style={{
+                        height: "200px",
+                        objectFit: "contain",
+                        padding: "20px",
+                      }}
+                      alt={`Diseño de tatuaje de ${poke.name}`}
+                      loading="lazy"
+                    />
+                    <Card.Body className="d-flex flex-column">
+                      <Card.Title className="text-capitalize text-center">
+                        #{poke.id.toString().padStart(3, "0")} {poke.name}
+                      </Card.Title>
+                      <Card.Text className="text-center text-muted mb-3">
+                        {poke.types.map((tipo) => (
+                          <span
+                            key={tipo.type.name}
+                            className="badge bg-secondary me-1"
+                          >
+                            {tipo.type.name}
+                          </span>
+                        ))}
+                      </Card.Text>
+                      <div className="mt-auto text-center">
+                        <Button variant="primary" className="w-100">
+                          <i className="bi bi-eye me-2" aria-hidden="true"></i>
+                          Ver Más
+                        </Button>
+                      </div>
+                    </Card.Body>
+                  </Link>
+                </TarjetaProducto>
+              </Col>
+            ))}
+          </Row>
+        )}
 
-        {/* Paginación */}
+        {/* Paginación mejorada */}
         {totalPaginas > 1 && (
           <Row className="mt-5">
             <Col>
-              <nav aria-label="Navegación del catálogo">
+              <nav aria-label="Navegación del catálogo de productos">
                 <ul className="pagination justify-content-center">
                   <li
                     className={`page-item ${
@@ -184,7 +243,9 @@ const Catalogo = () => {
                       className="page-link"
                       onClick={() => manejarCambioPagina(paginaActual - 1)}
                       disabled={paginaActual === 1}
+                      aria-label="Página anterior"
                     >
+                      <i className="bi bi-chevron-left" aria-hidden="true"></i>
                       Anterior
                     </button>
                   </li>
@@ -208,6 +269,10 @@ const Catalogo = () => {
                           <button
                             className="page-link"
                             onClick={() => manejarCambioPagina(numeroPagina)}
+                            aria-label={`Ir a página ${numeroPagina}`}
+                            aria-current={
+                              paginaActual === numeroPagina ? "page" : undefined
+                            }
                           >
                             {numeroPagina}
                           </button>
@@ -219,7 +284,9 @@ const Catalogo = () => {
                     ) {
                       return (
                         <li key={numeroPagina} className="page-item disabled">
-                          <span className="page-link">...</span>
+                          <span className="page-link" aria-hidden="true">
+                            ...
+                          </span>
                         </li>
                       );
                     }
@@ -235,8 +302,13 @@ const Catalogo = () => {
                       className="page-link"
                       onClick={() => manejarCambioPagina(paginaActual + 1)}
                       disabled={paginaActual === totalPaginas}
+                      aria-label="Página siguiente"
                     >
                       Siguiente
+                      <i
+                        className="bi bi-chevron-right ms-1"
+                        aria-hidden="true"
+                      ></i>
                     </button>
                   </li>
                 </ul>
