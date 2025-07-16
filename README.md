@@ -12,6 +12,7 @@ Pre-entrega Talento Tech.
 ## 1. Descripción del proyecto
 
 Es una página para calcular el precio de la sesión de tatuaje y tener comunicación con el "Poke tattoo studio", para por ejemplo agendar o consultar.
+
 ### ✅ Funcionalidades Implementadas
 
 - **🛒 Carrito de Compras**: Sistema completo con Context API
@@ -23,6 +24,7 @@ Es una página para calcular el precio de la sesión de tatuaje y tener comunica
 - Persistencia en localStorage
 - Cálculo automático de precios
 - Prefería cuando era accesible sin loggearse pero por cuestiones de consigna intenté darle otro sentido, <br> aunque mantiene la esencia de herramienta para presupuestar
+
 ### **Panel de Administración**
 - CRUD completo con validaciones
 - Interfaz intuitiva con modales
@@ -114,6 +116,8 @@ Feedback de mensaje enviado:
 ![Información sobre el servicio](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Mensaje-enviado-rm.png)
 
 ## 3.4 Carrito
+Carrito inhabilitado sesión cerrada:
+![Sesión cerrada](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Sesion-sinloggear.png)
 Carrito vacío:
 ![Carrito vacío](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Carrito-1-rm.png)
 Carrito con pokemones:
@@ -126,7 +130,16 @@ Confirmar compra.
 Finalizada.
 ![Compra finalizada](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Feedback-Compra-Finalizada-rm.png)
 
-#### 3.5 Componentes presentes en todas las páginas:
+## 3.5 Admin
+Admin (solo se muestra iniciando sesión):
+Productos agregados:
+![Sesión abierta](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Admin-productos-agregados.png)
+Formulario para agregar productos:
+![Agregar productos](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Admin-agregar-productos.png)
+Eliminar productos con confirmación:
+![Eliminar productos](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Admin-eliminarproductos-confirmacion.png)
+
+#### 3.6 Componentes presentes en todas las páginas:
 Navbar:
 ![Barra de Navegación](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/BarraNavegacion-rm.png)
 
