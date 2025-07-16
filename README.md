@@ -102,7 +102,7 @@ Buscador: podes buscar por nombre el pokemon.
 Card expandida: tiene información sobre el pokemon. Lo básico al igual que antes tiene el número, el nombre, y el tipo. Luego tiene otras características que pueden ser simbólicas para el usuario o simplemente un dato de color
 ![Detalle Imagen con información del pokemon](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Detalle-1-rm.png)
 Más abajo tenes opciones para personalizar tu tatuaje y aportar información para que el total sea lo más aproximado posible al precio final.
-![Opciones a elegir](https://https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Detalle-2-rm.png)
+![Opciones a elegir](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Detalle-2-rm.png)
 Y por último, los botones de agregar y volver, más una lista de avisos/información para tener en cuenta a la hora de continuar.
 ![Información sobre el servicio](https://github.com/anaelisab/Proyecto-TalentoReact2025-PokeTattoo/blob/main/public/images/Detalle-3-rm.png)
 Feedback visual al agregar un producto al carrito
