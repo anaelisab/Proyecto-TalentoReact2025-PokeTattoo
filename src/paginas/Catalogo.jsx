@@ -333,10 +333,10 @@ const Catalogo = () => {
                   estudio.
                 </p>
                 <p className="lead text-muted">
-                  Tener en cuenta que los precios son aproximados para las ideas
-                  pensadas por los artistas (tamaño, dificultad del diseño,
-                  horas, sesiones). Todo charlable eso es charlable, aun así el
-                  precio base de todos los tatuajes es 15 mil.
+                  Tener en cuenta que el precio base de todos los tatuajes es de
+                  15 mil. Los precios debajo de los diseños especiales son
+                  aproximados, puestos por los artistas (según tamaño,
+                  dificultad del diseño, horas, sesiones). Todo es charlable.
                 </p>
               </Col>
             </Row>
